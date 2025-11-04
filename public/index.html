@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veo Ad Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Generate a Product Ad with Google Veo</h1>
+        <p>
+          Upload a <strong>.gltf</strong> or <strong>.glb</strong> 3D model of your product and describe the
+          advertising concept. The server will forward the asset to Google Veo 2/3 and return the
+          generated video link.
+        </p>
+      </header>
+
+      <section class="card">
+        <form id="generate-form">
+          <label class="input-group">
+            <span>Product model (GLTF/GLB)</span>
+            <input type="file" id="model" name="model" accept=".gltf,.glb" required />
+          </label>
+
+          <label class="input-group">
+            <span>Advertising prompt (optional)</span>
+            <textarea id="prompt" name="prompt" rows="4" placeholder="Describe the scene, messaging, and target audience..."></textarea>
+          </label>
+
+          <button type="submit" id="submit-btn">Generate video</button>
+        </form>
+      </section>
+
+      <section id="status" class="status"></section>
+      <section id="result" class="result hidden">
+        <h2>Video job created</h2>
+        <p id="result-summary"></p>
+        <video id="result-video" controls class="video-player hidden"></video>
+        <p class="small-print">
+          The demo server returns a mocked response. Replace <code>generate_video_using_veo</code> in
+          <code>src/server.py</code> with a real Google Veo API call to generate actual footage.
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
